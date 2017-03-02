@@ -12,70 +12,71 @@
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.*/
-var dixonConstants = [];
-dixonConstants['95_3'] = 0.970;
-dixonConstants['95_3'] = 0.970;
-dixonConstants['95_4'] = 0.829;
-dixonConstants['95_5'] = 0.710;
-dixonConstants['95_6'] = 0.628;
-dixonConstants['95_7'] = 0.569;
+var dixonConstants = {
+	'95_3': 0.970,
+	'95_3': 0.970,
+	'95_4': 0.829,
+	'95_5': 0.710,
+	'95_6': 0.628,
+	'95_7': 0.569,
 
-dixonConstants['95_8'] = 0.608;
-dixonConstants['95_9'] = 0.564;
-dixonConstants['95_10'] = 0.530;
-dixonConstants['95_11'] = 0.502;
-dixonConstants['95_12'] = 0.479;
+	'95_8': 0.608,
+	'95_9': 0.564,
+	'95_10': 0.530,
+	'95_11': 0.502,
+	'95_12': 0.479,
 
-dixonConstants['95_13'] = 0.611;
-dixonConstants['95_14'] = 0.586;
-dixonConstants['95_15'] = 0.565;
-dixonConstants['95_16'] = 0.546;
-dixonConstants['95_17'] = 0.529;
-dixonConstants['95_18'] = 0.514;
-dixonConstants['95_19'] = 0.501;
-dixonConstants['95_20'] = 0.489;
-dixonConstants['95_21'] = 0.478;
-dixonConstants['95_22'] = 0.468;
-dixonConstants['95_23'] = 0.459;
-dixonConstants['95_24'] = 0.451;
-dixonConstants['95_25'] = 0.443;
-dixonConstants['95_26'] = 0.436;
-dixonConstants['95_27'] = 0.429;
-dixonConstants['95_28'] = 0.423;
-dixonConstants['95_29'] = 0.417;
-dixonConstants['95_30'] = 0.412;
+	'95_13': 0.611,
+	'95_14': 0.586,
+	'95_15': 0.565,
+	'95_16': 0.546,
+	'95_17': 0.529,
+	'95_18': 0.514,
+	'95_19': 0.501,
+	'95_20': 0.489,
+	'95_21': 0.478,
+	'95_22': 0.468,
+	'95_23': 0.459,
+	'95_24': 0.451,
+	'95_25': 0.443,
+	'95_26': 0.436,
+	'95_27': 0.429,
+	'95_28': 0.423,
+	'95_29': 0.417,
+	'95_30': 0.412,
 
-//99% constants
-dixonConstants['99_3'] = 0.994;
-dixonConstants['99_4'] = 0.926;
-dixonConstants['99_5'] = 0.821;
-dixonConstants['99_6'] = 0.740;
-dixonConstants['99_7'] = 0.608;
+	//99% constants
+	'99_3': 0.994,
+	'99_4': 0.926,
+	'99_5': 0.821,
+	'99_6': 0.740,
+	'99_7': 0.608,
 
-dixonConstants['99_8'] = 0.717;
-dixonConstants['99_9'] = 0.672;
-dixonConstants['99_10'] = 0.635;
-dixonConstants['99_11'] = 0.605;
-dixonConstants['99_12'] = 0.579;
+	'99_8': 0.717,
+	'99_9': 0.672,
+	'99_10': 0.635,
+	'99_11': 0.605,
+	'99_12': 0.579,
 
-dixonConstants['99_13'] = 0.697;
-dixonConstants['99_14'] = 0.670;
-dixonConstants['99_15'] = 0.647;
-dixonConstants['99_16'] = 0.627;
-dixonConstants['99_17'] = 0.610;
-dixonConstants['99_18'] = 0.594;
-dixonConstants['99_19'] = 0.580;
-dixonConstants['99_20'] = 0.567;
-dixonConstants['99_21'] = 0.555;
-dixonConstants['99_22'] = 0.544;
-dixonConstants['99_23'] = 0.535;
-dixonConstants['99_24'] = 0.526;
-dixonConstants['99_25'] = 0.517;
-dixonConstants['99_26'] = 0.510;
-dixonConstants['99_27'] = 0.502;
-dixonConstants['99_28'] = 0.495;
-dixonConstants['99_29'] = 0.489;
-dixonConstants['99_30'] = 0.483;
+	'99_13': 0.697,
+	'99_14': 0.670,
+	'99_15': 0.647,
+	'99_16': 0.627,
+	'99_17': 0.610,
+	'99_18': 0.594,
+	'99_19': 0.580,
+	'99_20': 0.567,
+	'99_21': 0.555,
+	'99_22': 0.544,
+	'99_23': 0.535,
+	'99_24': 0.526,
+	'99_25': 0.517,
+	'99_26': 0.510,
+	'99_27': 0.502,
+	'99_28': 0.495,
+	'99_29': 0.489,
+	'99_30': 0.483
+};
 
 /*
 Class model
