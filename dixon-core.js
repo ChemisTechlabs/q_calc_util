@@ -142,7 +142,6 @@ Dixon.prototype.clear = function () {
 /*
 Class exception
 */
-
 function DixonException(message) {
 	this.message = message;
 	this.name = "Chemis Dixon Exception";
@@ -300,7 +299,7 @@ DixonHistory.prototype.addRegister=function(register){
 
 DixonHistory.prototype.getRegisterById=function(id){
 	var register=null;
-	$.each(this.registers,function(){
+	this.registers.forEach(function(){
 		if(this.rDate.getTime()==id.split("-")[1]){
 			console.log("Achou registro!");
 			register=this;
