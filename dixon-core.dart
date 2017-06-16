@@ -88,26 +88,11 @@ class Dixon {
 
   List<double> get values => _values;
 
-  List<double> get remove => _removed;
+  List<double> get removed => _removed;
 
   //Adds a value to values list only if doesn't exist
   void addValue(double value) {
     if(_values.indexOf(value)==-1) _values.add(value);
-  }
-
-  //Removes a value from values list at given index and adds it to removed list
-  void removeValueAt(int index) => _removed.add(_values.removeAt(index));
-
-  //Removes the given value from values list and add it to removed list
-  void removeValue(double value){
-    _values.removeWhere((someValue){
-      if(value==someValue){
-        _removed.add(value);
-        return true;
-      }else{
-        return false;
-      }
-    });
   }
 
   //Returns a double value from values list stored in the given index
@@ -117,13 +102,13 @@ class Dixon {
   double getFirstValue() => _values.first;
 
   //Removes the first double values from values list and returns it
-  double removeFirstValue() => _values.removeAt(0);
+  void removeFirstValue() => _removed.add(_values.removeAt(0));
 
   //Returns the last double value from values list
   double getLastValue() => _values.last;
 
   //Removes the last double value from values list and returns it
-  double removeLastValue() => _values.removeLast();
+  void removeLastValue() => _removed.add(_values.removeLast());
 
   //Sorts values from values list in ascending order
   void sortValues() => _values.sort();
