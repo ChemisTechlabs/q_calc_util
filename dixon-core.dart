@@ -211,7 +211,7 @@ class DixonControl {
     return resultsObj;
   }
 
-  static DixonResults calc(dixonObj, percent) {
+  static DixonResults calc(Dixon dixonObj,int percent) {
     dixonObj.sortValues();
     return DixonControl.recursiveCalc(dixonObj, new DixonResults(percent));
   }
