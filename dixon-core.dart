@@ -13,78 +13,73 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.*/
 
-final Map<String,double> dixonConstants = {
-	'95_3': 0.970,
-	'95_4': 0.829,
-	'95_5': 0.710,
-	'95_6': 0.628,
-	'95_7': 0.569,
-
-	'95_8': 0.608,
-	'95_9': 0.564,
-	'95_10': 0.530,
-	'95_11': 0.502,
-	'95_12': 0.479,
-
-	'95_13': 0.611,
-	'95_14': 0.586,
-	'95_15': 0.565,
-	'95_16': 0.546,
-	'95_17': 0.529,
-	'95_18': 0.514,
-	'95_19': 0.501,
-	'95_20': 0.489,
-	'95_21': 0.478,
-	'95_22': 0.468,
-	'95_23': 0.459,
-	'95_24': 0.451,
-	'95_25': 0.443,
-	'95_26': 0.436,
-	'95_27': 0.429,
-	'95_28': 0.423,
-	'95_29': 0.417,
-	'95_30': 0.412,
-
-	//99% constants
-	'99_3': 0.994,
-	'99_4': 0.926,
-	'99_5': 0.821,
-	'99_6': 0.740,
-	'99_7': 0.608,
-
-	'99_8': 0.717,
-	'99_9': 0.672,
-	'99_10': 0.635,
-	'99_11': 0.605,
-	'99_12': 0.579,
-
-	'99_13': 0.697,
-	'99_14': 0.670,
-	'99_15': 0.647,
-	'99_16': 0.627,
-	'99_17': 0.610,
-	'99_18': 0.594,
-	'99_19': 0.580,
-	'99_20': 0.567,
-	'99_21': 0.555,
-	'99_22': 0.544,
-	'99_23': 0.535,
-	'99_24': 0.526,
-	'99_25': 0.517,
-	'99_26': 0.510,
-	'99_27': 0.502,
-	'99_28': 0.495,
-	'99_29': 0.489,
-	'99_30': 0.483
-};
-
 class Dixon {
 	List<double> _values = new List<double>();
   List<double> _removed = new List<double>();
+  static final Map<String,double> _constants = {
+    '95_3': 0.970,
+    '95_4': 0.829,
+    '95_5': 0.710,
+    '95_6': 0.628,
+    '95_7': 0.569,
 
-  Dixon (){
-    print("Dixon Object initialized");
-  }
+    '95_8': 0.608,
+    '95_9': 0.564,
+    '95_10': 0.530,
+    '95_11': 0.502,
+    '95_12': 0.479,
+
+    '95_13': 0.611,
+    '95_14': 0.586,
+    '95_15': 0.565,
+    '95_16': 0.546,
+    '95_17': 0.529,
+    '95_18': 0.514,
+    '95_19': 0.501,
+    '95_20': 0.489,
+    '95_21': 0.478,
+    '95_22': 0.468,
+    '95_23': 0.459,
+    '95_24': 0.451,
+    '95_25': 0.443,
+    '95_26': 0.436,
+    '95_27': 0.429,
+    '95_28': 0.423,
+    '95_29': 0.417,
+    '95_30': 0.412,
+
+    //99% constants
+    '99_3': 0.994,
+    '99_4': 0.926,
+    '99_5': 0.821,
+    '99_6': 0.740,
+    '99_7': 0.608,
+
+    '99_8': 0.717,
+    '99_9': 0.672,
+    '99_10': 0.635,
+    '99_11': 0.605,
+    '99_12': 0.579,
+
+    '99_13': 0.697,
+    '99_14': 0.670,
+    '99_15': 0.647,
+    '99_16': 0.627,
+    '99_17': 0.610,
+    '99_18': 0.594,
+    '99_19': 0.580,
+    '99_20': 0.567,
+    '99_21': 0.555,
+    '99_22': 0.544,
+    '99_23': 0.535,
+    '99_24': 0.526,
+    '99_25': 0.517,
+    '99_26': 0.510,
+    '99_27': 0.502,
+    '99_28': 0.495,
+    '99_29': 0.489,
+    '99_30': 0.483
+  };
 
   List<double> get values => _values;
 
@@ -118,22 +113,15 @@ class Dixon {
 
   //Clears values list
   void clear() => _values.clear();
-}
 
-class DixonException implements Exception {
-  //A message describing the Dixon error.
-  final String message;
-
-  //Creates a new DixonException with an optional error [message].
-	const DixonException([this.message = "Unknown error"]);
-
-	String toString() => "Chemis Dixon Exception: $message";
+  //Returns a double value from Dixon constants representing the Q value for the given percentage
+  double getQ(int percentage) => _constants["$percentage\_${_values.length}"];
 }
 
 class DixonControl {
 
-  static bool approved(double value,int percent,Dixon dixon) {
-    return (value < dixonConstants["$percent\_${dixon.getN()}"]);
+  static bool approved(double value,int percentage,Dixon dixon) {
+    return (value < dixon.getQ(percentage));
   }
 
   //lower end functions
@@ -267,4 +255,14 @@ class DixonHistory {
       return register.date.isAtSameMomentAs(dateTime);
     });
   }
+}
+
+class DixonException implements Exception {
+  //A message describing the Dixon error.
+  final String message;
+
+  //Creates a new DixonException with an optional error [message].
+  const DixonException([this.message = "Unknown error"]);
+
+  String toString() => "Chemis Dixon Exception: $message";
 }
