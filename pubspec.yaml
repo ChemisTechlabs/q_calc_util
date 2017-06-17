@@ -1,0 +1,8 @@
+name: chemis_core
+version: 1.0.0
+description: >
+  Chemis core functions package
+author: Guilherme Caldas <chemisproject@googlegroups.com>
+homepage: http://www.chemis.org
+environment:
+  sdk: ">=1.23.0"
