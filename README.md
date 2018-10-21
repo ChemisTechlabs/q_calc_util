@@ -1,3 +1,3 @@
 # Chemis Q Calc Util
 
-Chemis Q Calc's core package for calculating Dixon's Q Test
+Chemis Dixon's Q Test package for Dart
