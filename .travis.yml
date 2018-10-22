@@ -5,10 +5,9 @@ dart:
 
 dart_task:
 - test: --platform vm
-# No parallelism on Firefox (-j 1)
-# Causes flakiness – need to investigate
-- test: --platform firefox -j 1
+- test: --platform chrome
 - dartanalyzer
+- dartfmt
 
 cache:
   directories:
