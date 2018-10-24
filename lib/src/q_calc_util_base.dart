@@ -11,9 +11,10 @@ copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 */
 
+/// The available percentage of confidence to calculate Dixon's Q Test
 enum Confidence { percent95, percent99 }
 
-//Limit values for 95% of confidence
+// The limit values for 95% of confidence
 final Map<int, double> _qTable95 = {
   3: 0.970,
   4: 0.829,
@@ -45,7 +46,7 @@ final Map<int, double> _qTable95 = {
   30: 0.412
 };
 
-//Limit values for 99% of confidence
+// The limit values for 99% of confidence
 final Map<int, double> _qTable99 = {
   3: 0.994,
   4: 0.926,
@@ -97,39 +98,39 @@ bool _isApproved(double value, Confidence confidence, int n) {
 
 //lower end functions
 double _getLowerEnd3_7(List<double> values) {
-  return (values[1] - values[0]) / (values[values.length - 1] - values[0]);
+  return (values[1] - values.first) / (values.last - values.first);
 }
 
 double _getLowerEnd8_12(List<double> values) {
-  return (values[1] - values[0]) / (values[values.length - 2] - values[0]);
+  return (values[1] - values.first) /
+      (values[values.length - 2] - values.first);
 }
 
 double _getLowerEnd13(List<double> values) {
-  return (values[2] - values[0]) / (values[values.length - 3] - values[0]);
+  return (values[2] - values.first) /
+      (values[values.length - 3] - values.first);
 }
 
 //Upper end functions
 double _getUpperEnd3_7(List<double> values) {
-  return (values[values.length - 1] - values[values.length - 2]) /
-      (values[values.length - 1] - values[0]);
+  return (values.last - values[values.length - 2]) /
+      (values.last - values.first);
 }
 
 double _getUpperEnd8_12(List<double> values) {
-  return (values[values.length - 1] - values[values.length - 2]) /
-      (values[values.length - 1] - values[1]);
+  return (values.last - values[values.length - 2]) / (values.last - values[1]);
 }
 
 double _getUpperEnd13(List<double> values) {
-  return (values[values.length - 1] - values[values.length - 3]) /
-      (values[values.length - 1] - values[2]);
+  return (values.last - values[values.length - 3]) / (values.last - values[2]);
 }
 
-DixonResults _recursiveCalc(List<double> values, DixonResults resultsObj) {
+DixonResults _calculateQTest(List<double> values, DixonResults results) {
   double lowerEnd = 0.0;
   double upperEnd = 0.0;
 
   if (values.length < 3) {
-    throw "'n' is lower than 3";
+    throw DixonException("n is lower than 3");
   } else if (values.length <= 7) {
     lowerEnd = _getLowerEnd3_7(values);
     upperEnd = _getUpperEnd3_7(values);
@@ -141,45 +142,64 @@ DixonResults _recursiveCalc(List<double> values, DixonResults resultsObj) {
     upperEnd = _getUpperEnd13(values);
   }
 
-  if (_isApproved(lowerEnd, resultsObj.confidence, values.length)) {
-    resultsObj.lowerEnd = lowerEnd;
+  if (_isApproved(lowerEnd, results.confidence, values.length)) {
+    results.lowerEnd = lowerEnd;
   } else {
-    resultsObj.removedValues.add(values.removeAt(0)); //removed the first value
-    resultsObj.lowerEnd = _recursiveCalc(values, resultsObj).lowerEnd;
+    results.removedValues.add(values.removeAt(0)); //removed the first value
+    results.lowerEnd = _calculateQTest(values, results).lowerEnd;
   }
 
-  if (_isApproved(upperEnd, resultsObj.confidence, values.length)) {
-    resultsObj.upperEnd = upperEnd;
+  if (_isApproved(upperEnd, results.confidence, values.length)) {
+    results.upperEnd = upperEnd;
   } else {
-    resultsObj.removedValues.add(values.removeLast()); //removed last values
-    resultsObj.upperEnd = _recursiveCalc(values, resultsObj).upperEnd;
+    results.removedValues.add(values.removeLast()); //removed last values
+    results.upperEnd = _calculateQTest(values, results).upperEnd;
   }
 
-  return resultsObj;
+  return results;
 }
 
-DixonResults calc(List<double> values, Confidence confidence) {
-  List<double> filteredValues = values.toSet().toList();
-  filteredValues.sort();
-
-  return _recursiveCalc(
-      filteredValues, DixonResults(confidence, filteredValues));
-}
-
+/// A representation of a Q Test calculation result
 class DixonResults {
   double lowerEnd;
   double upperEnd;
   List<double> values;
-  List<double> removedValues=[];
+  List<double> removedValues = [];
   final Confidence _confidence;
 
   DixonResults(this._confidence, this.values);
 
+  /// The enum representing the confidence used in calculation
   get confidence => _confidence;
 
+  /// The length of [values] attribute
   get n => values.length;
 
+  /// The Q constant from Dixon's table for the resulting n and given confidence
   get q => _getQ(confidence, n);
 }
 
-// TODO: add docs
+/// A representation of a Q Test error
+class DixonException implements Exception {
+  /// Message describing the Dixon error
+  final String message;
+
+  /// Creates a new [DixonException] with optional message
+  DixonException([this.message = ""]);
+
+  @override
+  String toString() => "DixonException: $message";
+}
+
+/// Returns a [DixonResults] object representing the result of Q test calculation
+///
+/// Throws a [DixonException] if 'n' is or got lower than 3 during
+/// the calculation
+DixonResults calculateQTest(List<double> values, Confidence confidence) {
+  // Prepares values before calculation
+  List<double> filteredValues = values.toSet().toList();
+  filteredValues.sort();
+
+  return _calculateQTest(
+      filteredValues, DixonResults(confidence, filteredValues));
+}
