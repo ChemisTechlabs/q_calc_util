@@ -15,9 +15,17 @@ void printResults(DixonResults result) {
 main() {
   List<double> values = [0.764, 0.864, 0.936, 0.047, 1.028, 1.043];
 
-  DixonResults result95 = calculateQTest(values, Confidence.percent95);
-  DixonResults result99 = calculateQTest(values, Confidence.percent99);
+  try {
+    DixonResults result95 = calculateQTest(values, Confidence.percent95);
+    printResults(result95);
+  } on DixonException catch (error) {
+    print(error.toString());
+  }
 
-  printResults(result95);
-  printResults(result99);
+  try {
+    DixonResults result99 = calculateQTest(values, Confidence.percent99);
+    printResults(result99);
+  } on DixonException catch (error) {
+    print(error.toString());
+  }
 }
