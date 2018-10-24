@@ -1,0 +1,14 @@
+language: dart
+
+dart:
+- dev
+
+dart_task:
+- test: --platform vm
+- test: --platform chrome
+- dartanalyzer
+- dartfmt
+
+cache:
+  directories:
+  - $HOME/.pub-cache
