@@ -1,7 +1,7 @@
 name: q_calc_util
 description: Dixon's Q Test calculator package for Dart
 version: 0.1.0
-homepage: http://chemis.org
+homepage: https://github.com/ChemisTechlabs/q_calc_util
 author: Guilherme Caldas <gui.caldas.o@gmail.com>
 
 environment:
