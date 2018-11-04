@@ -1,3 +1,7 @@
+## 0.1.1
+
+- Fix error when n is out of bounds. Throws DixonException when not 3 < n =< 30
+
 ## 0.1.0
 
 - Initial release
