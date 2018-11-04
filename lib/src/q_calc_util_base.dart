@@ -200,6 +200,8 @@ DixonResults calculateQTest(List<double> values, Confidence confidence) {
   List<double> filteredValues = values.toSet().toList();
   filteredValues.sort();
 
+  filteredValues.length < 3 && (throw DixonException("n is lower than 3"));
+  filteredValues.length > 30 && (throw DixonException("n is greater than 30"));
   return _calculateQTest(
       filteredValues, DixonResults(confidence, filteredValues));
 }
