@@ -84,109 +84,95 @@ void main() {
     89.00,
     90.00
   ];
-  group('95% confidence tests', () {
-    test('Pass tests with list values1', () {
-      DixonResults results = calculateQTest(values1, Confidence.percent95);
+  group('calculateQTest', () {
+    group('with confidence of 95%', () {
+      test('should return a valid Q Test result when using list values1', () {
+        DixonResults results = calculateQTest(values1, Confidence.percent95);
 
-      expect(results.q, equals(0.569));
-      expect(results.n, equals(7));
-      expect(results.lowerEnd.toStringAsFixed(4), equals("0.1531"));
-      expect(results.upperEnd.toStringAsFixed(4), equals("0.0017"));
-      expect(results.removedValues.length, equals(1));
-      expect(results.removedValues, equals([1.9]));
+        expect(results.q, equals(0.569));
+        expect(results.n, equals(7));
+        expect(results.lowerEnd.toStringAsFixed(4), equals("0.1531"));
+        expect(results.upperEnd.toStringAsFixed(4), equals("0.0017"));
+        expect(results.removedValues.length, equals(1));
+        expect(results.removedValues, equals([1.9]));
+      });
+
+      test('should throw a DixonException when using list values2', () {
+        expect(() => calculateQTest(values2, Confidence.percent95),
+            throwsException);
+      });
+
+      test('should return a valid Q Test result when using list values3', () {
+        DixonResults results = calculateQTest(values3, Confidence.percent95);
+
+        expect(results.q, equals(0.489));
+        expect(results.n, equals(20));
+        expect(results.lowerEnd.toStringAsFixed(4), equals("0.0854"));
+        expect(results.upperEnd.toStringAsFixed(4), equals("0.1972"));
+        expect(results.removedValues.length, equals(0));
+        expect(results.removedValues, equals([]));
+      });
+
+      test('should throw a DixonException when using list values4', () {
+        expect(() => calculateQTest(values4, Confidence.percent95),
+            throwsException);
+      });
+
+      test('should return a valid Q Test result when using list values5', () {
+        DixonResults results = calculateQTest(values5, Confidence.percent95);
+
+        expect(results.q, equals(0.586));
+        expect(results.n, equals(14));
+        expect(results.lowerEnd.toStringAsFixed(4), equals("0.1190"));
+        expect(results.upperEnd.toStringAsFixed(4), equals("0.4714"));
+        expect(results.removedValues.length, equals(0));
+        expect(results.removedValues, equals([]));
+      });
     });
 
-    test('Pass tests with list values2', () {
-      try {
-        calculateQTest(values2, Confidence.percent95);
-      } catch (error) {
-        expect(error is DixonException, true);
-        expect(error.message, "n is greater than 30");
-      }
-    });
+    group('with confidence of 99%', () {
+      test('should return a valid Q Test result when using list values1', () {
+        DixonResults results = calculateQTest(values1, Confidence.percent99);
 
-    test('Pass tests with list values3', () {
-      DixonResults results = calculateQTest(values3, Confidence.percent95);
+        expect(results.q, equals(0.717));
+        expect(results.n, equals(8));
+        expect(results.lowerEnd.toStringAsFixed(4), equals("0.1531"));
+        expect(results.upperEnd.toStringAsFixed(4), equals("0.6468"));
+        expect(results.removedValues.length, equals(0));
+        expect(results.removedValues, equals([]));
+      });
 
-      expect(results.q, equals(0.489));
-      expect(results.n, equals(20));
-      expect(results.lowerEnd.toStringAsFixed(4), equals("0.0854"));
-      expect(results.upperEnd.toStringAsFixed(4), equals("0.1972"));
-      expect(results.removedValues.length, equals(0));
-      expect(results.removedValues, equals([]));
-    });
+      test('should throw a DixonException when using list values2', () {
+        expect(() => calculateQTest(values2, Confidence.percent99),
+            throwsException);
+      });
 
-    test('Pass tests with list values4', () {
-      try {
-        calculateQTest(values4, Confidence.percent95);
-      } catch (error) {
-        expect(error is DixonException, true);
-        expect(error.message, "n is lower than 3");
-      }
-    });
+      test('should return a valid Q Test result when using list values3', () {
+        DixonResults results = calculateQTest(values3, Confidence.percent99);
 
-    test('Pass tests with list values5', () {
-      DixonResults results = calculateQTest(values5, Confidence.percent95);
+        expect(results.q, equals(0.567));
+        expect(results.n, equals(20));
+        expect(results.lowerEnd.toStringAsFixed(4), equals("0.0854"));
+        expect(results.upperEnd.toStringAsFixed(4), equals("0.1972"));
+        expect(results.removedValues.length, equals(0));
+        expect(results.removedValues, equals([]));
+      });
 
-      expect(results.q, equals(0.586));
-      expect(results.n, equals(14));
-      expect(results.lowerEnd.toStringAsFixed(4), equals("0.1190"));
-      expect(results.upperEnd.toStringAsFixed(4), equals("0.4714"));
-      expect(results.removedValues.length, equals(0));
-      expect(results.removedValues, equals([]));
-    });
-  });
+      test('should throw a DixonException when using list values4', () {
+        expect(() => calculateQTest(values4, Confidence.percent99),
+            throwsException);
+      });
 
-  group('99% confidence tests', () {
-    test('Pass tests with list values1', () {
-      DixonResults results = calculateQTest(values1, Confidence.percent99);
+      test('should return a valid Q Test result when using list values5', () {
+        DixonResults results = calculateQTest(values5, Confidence.percent99);
 
-      expect(results.q, equals(0.717));
-      expect(results.n, equals(8));
-      expect(results.lowerEnd.toStringAsFixed(4), equals("0.1531"));
-      expect(results.upperEnd.toStringAsFixed(4), equals("0.6468"));
-      expect(results.removedValues.length, equals(0));
-      expect(results.removedValues, equals([]));
-    });
-
-    test('Pass tests with list values2', () {
-      try {
-        calculateQTest(values2, Confidence.percent99);
-      } catch (error) {
-        expect(error is DixonException, true);
-        expect(error.message, "n is greater than 30");
-      }
-    });
-
-    test('Pass tests with list values3', () {
-      DixonResults results = calculateQTest(values3, Confidence.percent99);
-
-      expect(results.q, equals(0.567));
-      expect(results.n, equals(20));
-      expect(results.lowerEnd.toStringAsFixed(4), equals("0.0854"));
-      expect(results.upperEnd.toStringAsFixed(4), equals("0.1972"));
-      expect(results.removedValues.length, equals(0));
-      expect(results.removedValues, equals([]));
-    });
-
-    test('Pass tests with list values4', () {
-      try {
-        calculateQTest(values4, Confidence.percent99);
-      } catch (error) {
-        expect(error is DixonException, true);
-        expect(error.message, "n is lower than 3");
-      }
-    });
-
-    test('Pass tests with list values5', () {
-      DixonResults results = calculateQTest(values5, Confidence.percent99);
-
-      expect(results.q, equals(0.670));
-      expect(results.n, equals(14));
-      expect(results.lowerEnd.toStringAsFixed(4), equals("0.1190"));
-      expect(results.upperEnd.toStringAsFixed(4), equals("0.4714"));
-      expect(results.removedValues.length, equals(0));
-      expect(results.removedValues, equals([]));
+        expect(results.q, equals(0.670));
+        expect(results.n, equals(14));
+        expect(results.lowerEnd.toStringAsFixed(4), equals("0.1190"));
+        expect(results.upperEnd.toStringAsFixed(4), equals("0.4714"));
+        expect(results.removedValues.length, equals(0));
+        expect(results.removedValues, equals([]));
+      });
     });
   });
 }
