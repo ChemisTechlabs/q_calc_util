@@ -3,7 +3,7 @@
 <!-- badges -->
 
 [![Build Status](https://travis-ci.org/ChemisTechlabs/q_calc_util.svg?branch=master)](https://travis-ci.org/ChemisTechlabs/q_calc_util)
-[![Coverage Status](https://coveralls.io/repos/github/ChemisTechlabs/q_calc_util/badge.svg?branch=master)](https://coveralls.io/github/ChemisTechlabs/q_calc_util?branch=master)
+[![codecov](https://codecov.io/gh/ChemisTechlabs/q_calc_util/branch/master/graph/badge.svg)](https://codecov.io/gh/ChemisTechlabs/q_calc_util)
 
 Q Calc Util is a Dixon's Q Test library for Dart developers. It makes
 easier for developers to perform outliers check in a range between 3 and 30 values

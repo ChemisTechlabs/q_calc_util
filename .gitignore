@@ -13,3 +13,5 @@ doc/api/
 .idea/
 .vscode/
 .DS_Store
+coverage.json
+lcov.info
