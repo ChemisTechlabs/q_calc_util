@@ -1,14 +1,20 @@
 language: dart
 
 dart:
-- dev
+  - dev
 
 dart_task:
-- test: --platform vm
-- test: --platform chrome
-- dartanalyzer
-- dartfmt
+  - test: --platform vm
+  - test: --platform chrome
+  - dartanalyzer
+  - dartfmt
+
+script:
+  - set -e
+  - pub run coverage:collect_coverage --port=8111 -o coverage.json --resume-isolates --wait-paused &
+  - dart --observe=8111 test/*
+  - bash <(curl -s https://codecov.io/bash)
 
 cache:
   directories:
-  - $HOME/.pub-cache
+    - $HOME/.pub-cache
