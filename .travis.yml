@@ -9,7 +9,7 @@ dart_task:
   - dartanalyzer
   - dartfmt
 
-script:
+after_success:
   - set -e
   - pub run coverage:collect_coverage --port=8111 -o coverage.json --resume-isolates --wait-paused &
   - dart --observe=8111 test/*
