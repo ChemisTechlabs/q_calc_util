@@ -7,11 +7,13 @@ jobs:
   include:
     - stage: analyze_and_format
       script:
-        - datanalyzer --fatal-warnings .
+        - dartanalyzer --fatal-warnings .
         - dartfmt -n --set-exit-if-changed .
-    - stage: test_and_coverage
+    - stage: test
       script:
         - pub run test
+    - stage: coverage
+      script:
         - pub run coverage:collect_coverage --port=8111 -o coverage.json \
           --resume-isolates --wait-paused &
         - dart --observe=8111 test/*
@@ -21,7 +23,8 @@ jobs:
 
 stages:
   - analyze_and_format
-  - test_and_coverage
+  - test
+  - coverage
 
 cache:
   directories:
