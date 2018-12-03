@@ -20,21 +20,9 @@ jobs:
     - stage: coverage
       script:
         - OBS_PORT=9292
-        - dart \
-          --enable-vm-service=${OBS_PORT} \
-          --pause-isolates-on-exit \
-          test/* &
-        - pub run coverage:collect_coverage \
-          --port=${OBS_PORT}  \
-          --out=coverage.json \
-          --resume-isolates   \
-          --wait-paused
-        - pub run coverage:format_coverage \
-          --packages=.packages \
-          --report-on=lib      \
-          --in=coverage.json   \
-          --out=lcov.info      \
-          --lcov
+        - dart --enable-vm-service=${OBS_PORT} --pause-isolates-on-exit test/* &
+        - pub run coverage:collect_coverage --port=${OBS_PORT} --out=coverage.json --resume-isolates --wait-paused
+        - pub run coverage:format_coverage --packages=.packages --report-on=lib --in=coverage.json --out=lcov.info --lcov
         - bash <(curl -s https://codecov.io/bash)
 
 stages:
