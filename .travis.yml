@@ -3,18 +3,32 @@ language: dart
 dart:
   - dev
 
-dart_task:
-  - test: --platform vm
-  - test: --platform chrome
-  - dartanalyzer
-  - dartfmt
+sudo: required
+addons:
+  chrome: stable
 
-script:
-  - set -e
-  - pub run coverage:collect_coverage --port=8111 -o coverage.json --resume-isolates --wait-paused &
-  - dart --observe=8111 test/*
-  - pub run coverage:format_coverage --packages=.packages --report-on=lib --in coverage.json --out lcov.info --lcov
-  - bash <(curl -s https://codecov.io/bash)
+jobs:
+  include:
+    - stage: analyze_and_format
+      script:
+        - dartanalyzer --fatal-warnings .
+        - dartfmt -n --set-exit-if-changed .
+    - stage: test
+      script:
+        - pub run test -p vm
+        - pub run test -p chrome
+    - stage: coverage
+      script:
+        - OBS_PORT=9292
+        - dart --enable-vm-service=${OBS_PORT} --pause-isolates-on-exit test/* &
+        - pub run coverage:collect_coverage --port=${OBS_PORT} --out=coverage.json --resume-isolates --wait-paused
+        - pub run coverage:format_coverage --packages=.packages --report-on=lib --in=coverage.json --out=lcov.info --lcov
+        - bash <(curl -s https://codecov.io/bash)
+
+stages:
+  - analyze_and_format
+  - test
+  - coverage
 
 cache:
   directories:
