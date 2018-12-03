@@ -3,6 +3,10 @@ language: dart
 dart:
   - dev
 
+sudo: required
+addons:
+  chrome: stable
+
 jobs:
   include:
     - stage: analyze_and_format
@@ -11,7 +15,8 @@ jobs:
         - dartfmt -n --set-exit-if-changed .
     - stage: test
       script:
-        - pub run test
+        - pub run test -p vm
+        - pub run test -p chrome
     - stage: coverage
       script:
         - pub run coverage:collect_coverage --port=8111 -o coverage.json \
