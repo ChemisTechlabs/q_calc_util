@@ -8,26 +8,21 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image:  google/dart:latest
+      image: google/dart:latest
 
     steps:
-    - uses: actions/checkout@v1
-    
-    - name: Install dependencies
-      run: pub get
-    
-    - name: Run tests
-      run: pub run test
-    
-    - name: Run coverage
-      run: |
-        pub run test --coverage coverage
-        pub run coverage:format_coverage --packages=.packages -i \
-        coverage/test/q_calc_util_test.dart.vm.json > coverage/lcov.info
-      env:
-        DART_VM_OPTIONS: -DSILENT_OBSERVATORY=true
+      - uses: actions/checkout@v1
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install dependencies
+        run: pub get
+
+      - name: Run tests
+        run: pub run test
+
+      - name: Run coverage
+        run: pub run test_coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
