@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
 
     container:
@@ -24,6 +24,8 @@ jobs:
         pub run test --coverage coverage
         pub run coverage:format_coverage --packages=.packages -i \
         coverage/test/q_calc_util_test.dart.vm.json > coverage/lcov.info
+      env:
+        DART_VM_OPTIONS: -DSILENT_OBSERVATORY=true
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
