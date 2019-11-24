@@ -22,7 +22,7 @@ jobs:
     - name: Run coverage
       run: |
         pub run test --coverage coverage
-        pub global run coverage:format_coverage --packages=.packages -i \
+        pub run coverage:format_coverage --packages=.packages -i \
         coverage/test/q_calc_util_test.dart.vm.json > coverage/lcov.info
 
     - name: Coveralls
