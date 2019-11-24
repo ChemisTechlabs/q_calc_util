@@ -2,7 +2,7 @@
 
 <!-- badges -->
 
-[![Build Status](https://travis-ci.org/ChemisTechlabs/q_calc_util.svg?branch=master)](https://travis-ci.org/ChemisTechlabs/q_calc_util)
+[![build](https://github.com/ChemisTechlabs/q_calc_util/workflows/Dart%20CI/badge.svg)]()
 [![codecov](https://codecov.io/gh/ChemisTechlabs/q_calc_util/branch/master/graph/badge.svg)](https://codecov.io/gh/ChemisTechlabs/q_calc_util)
 
 Q Calc Util is a Dixon's Q Test library for Dart developers. It makes
