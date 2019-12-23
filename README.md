@@ -21,11 +21,11 @@ Then you can get a `DixonResults` object containing Q Test results just calling
 
 ```dart
 // List of values to check outliers
-List<double> values = [0.764, 0.864, 0.936, 0.047, 1.028, 1.043];
+var values = [0.764, 0.864, 0.936, 0.047, 1.028, 1.043];
 
 try {
   // Calculates Q Test using 95% of confidence
-  DixonResults result = calculateQTest(values, Confidence.percent95);
+  var result = calculateQTest(values, Confidence.percent95);
 
   print("""
         Confidence: 95%

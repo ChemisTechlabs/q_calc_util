@@ -1,8 +1,8 @@
 import 'package:q_calc_util/q_calc_util.dart';
 
-void printResults(DixonResults result) {
+void printResults(DixonResults result, int confidence) {
   print('''
-      Confidence: 95%
+      Confidence: ${confidence}%
        Lower end: ${result.lowerEnd.toStringAsFixed(3)}
        Upper end: ${result.upperEnd.toStringAsFixed(3)}
                Q: ${result.q}
@@ -17,14 +17,14 @@ void main() {
 
   try {
     var result95 = calculateQTest(values, Confidence.percent95);
-    printResults(result95);
+    printResults(result95, 95);
   } on DixonException catch (error) {
     print(error.toString());
   }
 
   try {
     var result99 = calculateQTest(values, Confidence.percent99);
-    printResults(result99);
+    printResults(result99, 99);
   } on DixonException catch (error) {
     print(error.toString());
   }
