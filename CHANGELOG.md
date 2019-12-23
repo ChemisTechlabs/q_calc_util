@@ -1,3 +1,7 @@
+## 0.1.2
+- Update code to match Pedantic recommendations
+- Fix examples
+
 ## 0.1.1+1
 
 - Update dependencies
