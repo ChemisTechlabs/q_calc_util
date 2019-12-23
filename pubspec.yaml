@@ -12,3 +12,4 @@ environment:
 dev_dependencies:
   test: ^1.9.4
   test_coverage: ^0.4.0
+  pedantic: ^1.0.0
