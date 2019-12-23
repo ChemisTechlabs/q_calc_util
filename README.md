@@ -27,7 +27,7 @@ try {
   // Calculates Q Test using 95% of confidence
   var result = calculateQTest(values, Confidence.percent95);
 
-  print("""
+  print('''
         Confidence: 95%
          Lower end: ${result.lowerEnd.toStringAsFixed(3)}
          Upper end: ${result.upperEnd.toStringAsFixed(3)}
@@ -35,7 +35,7 @@ try {
                  N: ${result.n}
             Values: ${result.values.toString()}
     Removed values: ${result.removedValues.toString()}
-    """);
+    ''');
 } on DixonException catch (error) {
   // Catches DixonException in case of 'n' lower than 3 values
   print(error.toString());
