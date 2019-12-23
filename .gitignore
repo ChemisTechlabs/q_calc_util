@@ -16,3 +16,4 @@ doc/api/
 coverage.json
 lcov.info
 coverage/
+.test_coverage.dart
