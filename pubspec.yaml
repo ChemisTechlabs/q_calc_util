@@ -4,7 +4,6 @@ description: >
   outlier in a range between 3 and 30 double numbers
 version: 0.1.2
 homepage: https://github.com/ChemisTechlabs/q_calc_util
-author: Guilherme Caldas <gcaldas@chemis.org>
 
 environment:
   sdk: '>=2.0.0 <3.0.0'
