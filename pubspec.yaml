@@ -7,7 +7,7 @@ homepage: https://github.com/ChemisTechlabs/q_calc_util
 author: Guilherme Caldas <gcaldas@chemis.org>
 
 environment:
-  sdk: ">=2.0.0 <3.0.0"
+  sdk: '>=2.0.0 <3.0.0'
 
 dev_dependencies:
   test: ^1.9.4

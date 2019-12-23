@@ -126,11 +126,11 @@ double _getUpperEnd13(List<double> values) {
 }
 
 DixonResults _calculateQTest(List<double> values, DixonResults results) {
-  double lowerEnd = 0.0;
-  double upperEnd = 0.0;
+  var lowerEnd = 0.0;
+  var upperEnd = 0.0;
 
   if (values.length < 3) {
-    throw DixonException("n is lower than 3");
+    throw DixonException('n is lower than 3');
   } else if (values.length <= 7) {
     lowerEnd = _getLowerEnd3_7(values);
     upperEnd = _getUpperEnd3_7(values);
@@ -170,13 +170,13 @@ class DixonResults {
   DixonResults(this._confidence, this.values);
 
   /// The enum representing the confidence used in calculation
-  get confidence => _confidence;
+  Confidence get confidence => _confidence;
 
   /// The length of [values] attribute
-  get n => values.length;
+  int get n => values.length;
 
   /// The Q constant from Dixon's table for the resulting n and given confidence
-  get q => _getQ(confidence, n);
+  double get q => _getQ(confidence, n);
 }
 
 /// A representation of a Q Test error
@@ -185,10 +185,10 @@ class DixonException implements Exception {
   final String message;
 
   /// Creates a new [DixonException] with optional message
-  DixonException([this.message = ""]);
+  DixonException([this.message = '']);
 
   @override
-  String toString() => "DixonException: $message";
+  String toString() => 'DixonException: $message';
 }
 
 /// Returns a [DixonResults] object representing the result of Q test calculation
@@ -197,11 +197,11 @@ class DixonException implements Exception {
 /// the calculation
 DixonResults calculateQTest(List<double> values, Confidence confidence) {
   // Prepares values before calculation
-  List<double> filteredValues = values.toSet().toList();
+  var filteredValues = values.toSet().toList();
   filteredValues.sort();
 
-  filteredValues.length < 3 && (throw DixonException("n is lower than 3"));
-  filteredValues.length > 30 && (throw DixonException("n is greater than 30"));
+  filteredValues.length < 3 && (throw DixonException('n is lower than 3'));
+  filteredValues.length > 30 && (throw DixonException('n is greater than 30'));
   return _calculateQTest(
       filteredValues, DixonResults(confidence, filteredValues));
 }
