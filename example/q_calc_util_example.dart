@@ -2,9 +2,9 @@ import 'package:q_calc_util/q_calc_util.dart';
 
 void printResults(DixonResults result, int confidence) {
   print('''
-      Confidence: ${confidence}%
-       Lower end: ${result.lowerEnd.toStringAsFixed(3)}
-       Upper end: ${result.upperEnd.toStringAsFixed(3)}
+      Confidence: $confidence%
+       Lower end: ${result.lowerEnd!.toStringAsFixed(3)}
+       Upper end: ${result.upperEnd!.toStringAsFixed(3)}
                Q: ${result.q}
                N: ${result.n}
           Values: ${result.values.toString()}

@@ -1,3 +1,7 @@
+## 1.0.0
+- Support to sound null safety
+- Update deprecated dependencies
+
 ## 0.1.2
 - Update code to match Pedantic recommendations
 - Fix examples

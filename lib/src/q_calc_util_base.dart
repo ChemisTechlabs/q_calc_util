@@ -80,7 +80,7 @@ final Map<int, double> _qTable99 = {
 
 /// Returns a double value from Dixon constants map representing the Q value for
 /// the given `confidence` and `n` value
-double _getQ(Confidence confidence, int n) {
+double? _getQ(Confidence confidence, int n) {
   switch (confidence) {
     case Confidence.percent95:
       return _qTable95[n];
@@ -93,7 +93,7 @@ double _getQ(Confidence confidence, int n) {
 
 //Checks if value is approved under given confidence and n
 bool _isApproved(double value, Confidence confidence, int n) {
-  return (value < _getQ(confidence, n));
+  return (value < _getQ(confidence, n)!);
 }
 
 //lower end functions
@@ -161,8 +161,8 @@ DixonResults _calculateQTest(List<double> values, DixonResults results) {
 
 /// A representation of a Q Test calculation result
 class DixonResults {
-  double lowerEnd;
-  double upperEnd;
+  double? lowerEnd;
+  double? upperEnd;
   List<double> values;
   List<double> removedValues = [];
   final Confidence _confidence;
@@ -176,7 +176,7 @@ class DixonResults {
   int get n => values.length;
 
   /// The Q constant from Dixon's table for the resulting n and given confidence
-  double get q => _getQ(confidence, n);
+  double? get q => _getQ(confidence, n);
 }
 
 /// A representation of a Q Test error

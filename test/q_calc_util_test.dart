@@ -91,8 +91,8 @@ void main() {
 
         expect(results.q, equals(0.569));
         expect(results.n, equals(7));
-        expect(results.lowerEnd.toStringAsFixed(4), equals('0.1531'));
-        expect(results.upperEnd.toStringAsFixed(4), equals('0.0017'));
+        expect(results.lowerEnd!.toStringAsFixed(4), equals('0.1531'));
+        expect(results.upperEnd!.toStringAsFixed(4), equals('0.0017'));
         expect(results.removedValues.length, equals(1));
         expect(results.removedValues, equals([1.9]));
       });
@@ -107,8 +107,8 @@ void main() {
 
         expect(results.q, equals(0.489));
         expect(results.n, equals(20));
-        expect(results.lowerEnd.toStringAsFixed(4), equals('0.0854'));
-        expect(results.upperEnd.toStringAsFixed(4), equals('0.1972'));
+        expect(results.lowerEnd!.toStringAsFixed(4), equals('0.0854'));
+        expect(results.upperEnd!.toStringAsFixed(4), equals('0.1972'));
         expect(results.removedValues.length, equals(0));
         expect(results.removedValues, equals([]));
       });
@@ -123,8 +123,8 @@ void main() {
 
         expect(results.q, equals(0.586));
         expect(results.n, equals(14));
-        expect(results.lowerEnd.toStringAsFixed(4), equals('0.1190'));
-        expect(results.upperEnd.toStringAsFixed(4), equals('0.4714'));
+        expect(results.lowerEnd!.toStringAsFixed(4), equals('0.1190'));
+        expect(results.upperEnd!.toStringAsFixed(4), equals('0.4714'));
         expect(results.removedValues.length, equals(0));
         expect(results.removedValues, equals([]));
       });
@@ -136,8 +136,8 @@ void main() {
 
         expect(results.q, equals(0.717));
         expect(results.n, equals(8));
-        expect(results.lowerEnd.toStringAsFixed(4), equals('0.1531'));
-        expect(results.upperEnd.toStringAsFixed(4), equals('0.6468'));
+        expect(results.lowerEnd!.toStringAsFixed(4), equals('0.1531'));
+        expect(results.upperEnd!.toStringAsFixed(4), equals('0.6468'));
         expect(results.removedValues.length, equals(0));
         expect(results.removedValues, equals([]));
       });
@@ -152,8 +152,8 @@ void main() {
 
         expect(results.q, equals(0.567));
         expect(results.n, equals(20));
-        expect(results.lowerEnd.toStringAsFixed(4), equals('0.0854'));
-        expect(results.upperEnd.toStringAsFixed(4), equals('0.1972'));
+        expect(results.lowerEnd!.toStringAsFixed(4), equals('0.0854'));
+        expect(results.upperEnd!.toStringAsFixed(4), equals('0.1972'));
         expect(results.removedValues.length, equals(0));
         expect(results.removedValues, equals([]));
       });
@@ -168,8 +168,8 @@ void main() {
 
         expect(results.q, equals(0.670));
         expect(results.n, equals(14));
-        expect(results.lowerEnd.toStringAsFixed(4), equals('0.1190'));
-        expect(results.upperEnd.toStringAsFixed(4), equals('0.4714'));
+        expect(results.lowerEnd!.toStringAsFixed(4), equals('0.1190'));
+        expect(results.upperEnd!.toStringAsFixed(4), equals('0.4714'));
         expect(results.removedValues.length, equals(0));
         expect(results.removedValues, equals([]));
       });
