@@ -7,8 +7,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
 
-    container:
-      image: google/dart:latest
+    container: dart:latest
 
     steps:
       - uses: actions/checkout@v1
