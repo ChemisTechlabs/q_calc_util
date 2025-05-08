@@ -1,11 +1,29 @@
-<!-- markdownlint-configure-file { "no-duplicate-heading": false } -->
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.0.0] - 2025-04-07
+
+### Added
+
+- Named parameters
+- More comprehensive API
+
+### Changed
+
+- Refactored project, splitting dependencies and responsibilities.
+- Uses DixonCalculator to call the Q Calc test using a single instance.
+- Results are now immutable classes.
+- Updated dependencies.
+- Updated logic using new Dart SDK 3.7.0.
+- Migrated license to BSD-3.
+
+### Removed
+
+- Recursive function used to calculate upper and lower ends.
 
 ## [1.1.0] - 2024-02-20
 
@@ -33,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update code to match Pedantic recommendations
-  
+
 ### Fixed
 
 - Code examples
