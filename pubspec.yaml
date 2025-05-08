@@ -2,12 +2,12 @@ name: q_calc_util
 description: >
   Dixon's Q Test calculator package for Dart. It makes it easy to identify an
   outlier in a range between 3 and 30 double numbers
-version: 1.1.0
+version: 2.0.0
 homepage: https://github.com/ChemisTechlabs/q_calc_util
 
 environment:
-  sdk: "^3.0.0"
+  sdk: ">=3.7.0"
 
 dev_dependencies:
-  lints: ^3.0.0
-  test: ^1.25.2
+  lints: ^5.1.1
+  test: ^1.25.15
