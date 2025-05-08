@@ -6,7 +6,7 @@ version: 2.0.0
 homepage: https://github.com/ChemisTechlabs/q_calc_util
 
 environment:
-  sdk: ">=3.7.0"
+  sdk: "^3.7.0"
 
 dev_dependencies:
   lints: ^5.1.1
