@@ -13,7 +13,7 @@ void printResults(DixonResult result) {
 }
 
 void main() {
-  var values = {0.764, 0.864, 0.936, 0.047, 1.028, 1.043};
+  final values = {0.764, 0.864, 0.936, 0.047, 1.028, 1.043};
 
   try {
     var result95 = DixonCalculator.instance.calculate(
